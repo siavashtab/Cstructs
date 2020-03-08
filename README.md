@@ -8,7 +8,7 @@ Author: Siavash Tabrizian - stabrizian@smu.edu
 -----------
 
 In all data structures there is a node object 
-which contains the the main data that the user want to store in the data type.
+which contains the main data that the user want to store.
 For different purposes you can modify this  - based on the data that you want to store - 
 in order to use the data structures.
 
