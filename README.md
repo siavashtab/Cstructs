@@ -23,5 +23,5 @@ It has to main functions:
 
 - Push: for adding a new node to the collection
 
-- Pop: removes and returns the top node in the collection
+- Pop: removes and returns the top node from the collection
 
