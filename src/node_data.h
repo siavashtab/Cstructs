@@ -23,6 +23,7 @@
  */
  typedef struct{
 	dVector  data;
+	int      vec_size;
 	
 	nodeType * prevnode;
 	nodeType * nextnode;
@@ -30,7 +31,8 @@
 
 
 /* subroutines in node_data.c */
-nodeType *newNode(nodeType *prev, nodeType *next, dVector nodedat);
+nodeType *newNode(nodeType *prev, dVector nodedat);
+void printNode(nodeType *node)
 
 
 #endif /* node_data_H_ */
