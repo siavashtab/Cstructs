@@ -4,6 +4,7 @@
  * stack.c
  *
  *   C implementation of the sack abstract data type
+ *          using doubly linked list
  *
  *
  *
