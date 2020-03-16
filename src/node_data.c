@@ -13,7 +13,6 @@
  */
  
  
-#include <utils.h>
 #include <node_data.h>
 
 
@@ -50,6 +49,6 @@ void printNode(nodeType *node)
 	
 	printf("node data is: \n");
 	for ( n = 1; n <= node->vec_size; n++ )
-			printf("%4.6lf, ", new_node->data[n]);
+			printf("%4.6lf, ", node->data[n]);
 		printf("\n");
 }

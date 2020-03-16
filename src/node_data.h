@@ -15,6 +15,10 @@
 #ifndef NODE_DATA_H_
 #define NODE_DATA_H_
  
+
+#include <utils.h>
+
+
  /*
 	nodeType is the main data structure that is going to be stored in each abstract formats
 	such as stack, queue, etc. 
