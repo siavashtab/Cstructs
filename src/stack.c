@@ -40,26 +40,27 @@ nodeType * Stackpeek() {
    return stack[Stacktop];
 }
 
-int Stackpop() {
+nodeType * Stackpop() {
 	nodeType * node;
 
    if(!isStackempty()) {
-	  node = newNode(nodeType *prev, dVector nodedat);
-      data = stack[top];
-      top = top - 1;   
-      return data;
+	  node = newNode(stack[Stacktop], stack[Stacktop]->data);
+	  Stacktop = Stacktop - 1;
+      return node;
    } else {
-      printf("Could not retrieve data, Stack is empty.\n");
+	   errMsg("Stack", "Stackpop", "stack is empty", 0);
    }
 }
 
-int push(int data) {
+int Stackpush(nodeType * node) {
 
-   if(!isfull()) {
-      top = top + 1;   
-      stack[top] = data;
+   if(!isStackfull()) {
+	   Stacktop = Stacktop + 1;
+	   stack[Stacktop] = node;
+	   return 1;
    } else {
-      printf("Could not insert data, Stack is full.\n");
+	   errMsg("Stack", "Stackpop", "stack is empty", 0);
+	   return 0;
    }
 }
 
