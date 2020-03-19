@@ -19,6 +19,18 @@
  
  #include <stack.h>
  
+int newStack()
+{
+	if (!(stack = (nodeType**)arr_alloc(stacksize, nodeType*)))
+	{
+		errMsg("newStack()", "stack", "data allocation", 0);
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
  
  int isStackempty() {
 
@@ -64,18 +76,23 @@ int Stackpush(nodeType * node) {
    }
 }
 
+int StackpushDP(nodeType * node) {
 
-#define INITIAL_CAPACITY 3
-
-void push(int *arr, int index, int value, int *size, int *capacity){
-     if(*size > *capacity){
-          realloc(arr, sizeof(arr) * 2);
-          *capacity = sizeof(arr) * 2;
-     }
-     
-     arr[index] = value;
-     *size = *size + 1;
+	if (!isStackfull()) {
+		Stacktop = Stacktop + 1;
+		stack[Stacktop] = node;
+		return 1;
+	}
+	else {
+		realloc(stack, sizeof(stack) * 2);
+		stacksize = stacksize + sizeof(stack) * 2;
+		Stacktop = Stacktop + 1;
+		stack[Stacktop] = node;
+		return 1;
+	}
 }
+
+
 
 
  

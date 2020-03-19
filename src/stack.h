@@ -23,19 +23,20 @@
 
 #define INITIAL_StackSize 8
 int stacksize = INITIAL_StackSize;
-nodeType * stack[INITIAL_StackSize];
+nodeType** stack;
 int Stacktop = -1;    
 
 
 /*
   Stack subroutines:
 */
+int newStack();
 int isStackempty();
 int isStackfull();
 nodeType * Stackpeek();
 nodeType * Stackpop();
 int Stackpush(nodeType *node);
-void Stacksizeadjust();
+int StackpushDP(nodeType *node);
 
 
 

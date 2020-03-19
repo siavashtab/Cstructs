@@ -200,62 +200,7 @@ void calcMeanVariance(dVector x, int lenX, double *mean, double *variance) {
 
 }//END calcVariance()
 
-double vXv(dVector a, dVector b, iVector idxCol, int len) {
-	double ans = 0.0;
-	int n;
 
-	if(idxCol == NULL)
-		for ( n = 1; n <= len; n++ )
-			ans += a[n]*b[n];
-	else
-		for (n = 1; n <= len; n++ )
-			ans += a[n]*b[idxCol[n]];
-
-	return ans;
-}//END vXv()
-
-double vXvSparse(dVector v, sparseVector *vSparse){
-	int		cnt;
-	double 	ans;
-
-	ans = 0.0;
-	for (cnt = 1; cnt <= vSparse->cnt; cnt++)
-		ans += vSparse->val[cnt] * v[vSparse->col[cnt]];
-
-	return ans;
-}//END vXvSparse()
-
-dVector MSparsexvAdd(sparseMatrix *M, dVector v, dVector ans){
-	int	cnt;
-
-	for (cnt = 1; cnt <= M->cnt; cnt++)
-		ans[M->row[cnt]] += M->val[cnt] * v[M->col[cnt]];
-
-	return ans;
-}//END MSparsexv()
-
-dVector MSparsexvSub(sparseMatrix *M, dVector v, dVector ans){
-	int	cnt;
-
-	for (cnt = 1; cnt <= M->cnt; cnt++)
-		ans[M->row[cnt]] -= M->val[cnt] * v[M->col[cnt]];
-
-	return ans;
-}//END MSparsexvSub()
-
-dVector vxMSparse(dVector v, sparseMatrix *M, int len) {
-	int		cnt;
-	dVector	ans;
-
-	if(!(ans = (dVector) arr_alloc(len+1, double)))
-		errMsg("allocation", "vxMSparse", "ans", 1);
-
-	for (cnt = 1; cnt <= M->cnt; cnt++)
-		ans[M->col[cnt]] += v[M->row[cnt]] * M->val[cnt];
-	ans[0] = oneNorm(ans+1, len);
-
-	return ans;
-}//END PIxT()
 
 void vPlusv(dVector a, dVector b, double mult, int len){
 	int 	cnt;
@@ -461,25 +406,6 @@ void printIntvec(iVector vec, int len, FILE *fptr){
 
 }//END printIntvec()
 
-void printSparseVector(dVector vec, iVector indices, int len) {
-	int n;
-
-	for ( n = 1; n <= len; n++ )
-		printf("%4.3lf\t", vec[indices[n]]);
-	printf("\n");
-
-}//END printSparseVector()
-
-void printSparseMatrix(sparseMatrix *V, char *cString) {
-	int 	cnt;
-	printf("%s (%d) ::\n\t\n", cString, V->cnt);
-	for (cnt = 1; cnt <= V->cnt; cnt++){
-		printf("(%d, %d, %.2f)\t\n", V->row[cnt], V->col[cnt], V->val[cnt]);
-		if ( cnt % 5 == 0 )
-			printf("\n");
-	}
-	printf("\n");
-}// END print_sparseMatrix()
 
 void printLine() {
 
@@ -609,20 +535,3 @@ void subVectors(dVector a, dVector b, iVector indices, int len){
 
 }//END subVectors()
 
-
-void freeSparseMatrix(sparseMatrix *M) {
-
-	if (M->col) mem_free(M->col);
-	if (M->row) mem_free(M->row);
-	if (M->val) mem_free(M->val);
-	mem_free(M);
-
-}//END freeSparseMatrix()
-
-void freeSparseVector(sparseVector *v) {
-
-	if (v->col) mem_free(v->col);
-	if (v->val) mem_free(v->val);
-	mem_free(v);
-
-}//END freeSparseMatrix()
