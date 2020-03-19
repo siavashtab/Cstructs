@@ -32,6 +32,7 @@ int Stacktop = -1;
 */
 int isStackempty();
 int isStackfull();
+nodeType * Stackpeek();
 nodeType * Stackpop();
 int Stackpush(nodeType *node);
 void Stacksizeadjust();

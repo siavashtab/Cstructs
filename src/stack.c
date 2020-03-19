@@ -20,30 +20,31 @@
  #include <stack.h>
  
  
- int isempty() {
+ int isStackempty() {
 
-   if(top == -1)
+   if(Stacktop == -1)
       return 1;
    else
       return 0;
 }
    
-int isfull() {
+int isStackfull() {
 
-   if(top == MAXSIZE)
+   if(Stacktop == stacksize)
       return 1;
    else
       return 0;
 }
 
-int peek() {
-   return stack[top];
+nodeType * Stackpeek() {
+   return stack[Stacktop];
 }
 
-int pop() {
-   int data;
-	
-   if(!isempty()) {
+int Stackpop() {
+	nodeType * node;
+
+   if(!isStackempty()) {
+	  node = newNode(nodeType *prev, dVector nodedat);
       data = stack[top];
       top = top - 1;   
       return data;
