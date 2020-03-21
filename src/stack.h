@@ -18,13 +18,11 @@
 #ifndef STACK_H_
 #define STACK_H_
  
- #include <stdio.h>
- #include <node_data.h>
+#include <stdio.h>
+#include <node_data.h>
 
 #define INITIAL_StackSize 8
-int stacksize = INITIAL_StackSize;
-nodeType** stack;
-int Stacktop = -1;    
+ 
 
 
 /*

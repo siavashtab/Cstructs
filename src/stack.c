@@ -17,8 +17,12 @@
  *=====================================================*/
  
  
- #include <stack.h>
+#include <stack.h>
  
+int stacksize = INITIAL_StackSize;
+nodeType** stack;
+int Stacktop = -1;
+
 int newStack()
 {
 	if (!(stack = (nodeType**)arr_alloc(stacksize, nodeType*)))
