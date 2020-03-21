@@ -18,6 +18,11 @@
 
 nodeType *newNode(nodeType *prev, dVector nodedat)
 {
+	dataType * data;
+
+	if (!(data = (dataType *)mem_malloc(sizeof(dataType))))
+		errMsg("allocation", "newNode", "dataType", 0);
+	
 	nodeType * new_node;
 	
 	if ( !(new_node = (nodeType *) mem_malloc(sizeof(nodeType))) )
@@ -34,9 +39,9 @@ nodeType *newNode(nodeType *prev, dVector nodedat)
 	prev->nextnode = new_node;
 	
 	
-	if ( !(new_node->data = (dVector) arr_alloc(prev->vec_size, double)) )
-			errMsg("allocation", "newNode", "data allocation", 0);
-	new_node->data = nodedat;
+	if ( !(new_node->data = (dataType *)mem_malloc(sizeof(dataType))))
+		errMsg("allocation", "new_node->data", "next node pointer", 0);
+	new_node->data = data;
 	
 		
 }
