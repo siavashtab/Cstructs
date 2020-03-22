@@ -3,7 +3,7 @@ A C implementation of some useful doubly linked list-based abstract data types
 
 -----------
 
-##Author: Siavash Tabrizian - stabrizian@smu.edu
+## Author: Siavash Tabrizian - stabrizian@smu.edu
 
 -----------
 
