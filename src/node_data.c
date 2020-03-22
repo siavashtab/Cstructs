@@ -82,6 +82,7 @@ nodeType *newNodeOrig(int size, dVector nodedat)
 
 /*
    This is the sorting comparison for heap sorting of nodes
+   The current comparison is based on the twoNorm of the data vector
 */
 bool OneGreater2(nodeType *one, nodeType *two)
 {
