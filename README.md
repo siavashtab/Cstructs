@@ -27,7 +27,7 @@ It has two main functions:
 
 Example:
 
-```ruby
+```c
 	if (newStack() == 0)
 	{
 		printf("error!\n");
