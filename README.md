@@ -25,3 +25,39 @@ It has two main functions:
 
 - Pop: removes and returns the top node from the collection
 
+Example:
+'''C
+	if (newStack() == 0)
+	{
+		printf("error!\n");
+	}
+	else
+	{
+		printf("done!\n");
+	}
+
+	double nodedat1[3] = { 1.0,3.0,6.0 };
+	double nodedat2[3] = { 1.5,3.2,6.4 };
+	double nodedat3[3] = { 1.3,3.3,6.3 };
+	double nodedat4[3] = { 1.2,3.2,6.2 };
+
+	
+	dVector nodedat = &nodedat1;
+	nodeType* node1 = newNodeOrig(3, nodedat);
+	Stackpush(node1);
+
+	nodedat = &nodedat2;
+	nodeType* node2 = newNode(node1, nodedat);
+	Stackpush(node2);
+
+	nodedat = &nodedat3;
+	nodeType* node3 = newNode(node2, nodedat);
+	Stackpush(node3);
+
+	nodedat = &nodedat4;
+	nodeType* node4 = newNode(node3, nodedat);
+	StackpushDP(node4);
+
+	printNode(Stackpeek());
+'''
+
