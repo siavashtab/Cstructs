@@ -76,7 +76,7 @@ int Stackpush(nodeType * node) {
 	   stack[Stacktop] = node;
 	   return 1;
    } else {
-	   errMsg("Stack", "Stackpop", "stack is empty", 0);
+	   errMsg("Stack", "Stackpush", "stack is empty", 0);
 	   return 0;
    }
 }
