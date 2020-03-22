@@ -84,6 +84,7 @@ int Stackpush(nodeType * node) {
 int StackpushDP(nodeType * node) {
 
 	if (!isStackfull()) {
+		printf("Warning: Adjusting stack size!\n");
 		Stacktop = Stacktop + 1;
 		stack[Stacktop] = node;
 		return 1;

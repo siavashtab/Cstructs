@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <node_data.h>
 
-#define INITIAL_StackSize 8
+#define INITIAL_StackSize 3
  
 
 

@@ -39,6 +39,7 @@ typedef struct{
 
 /* subroutines in node_data.c */
 nodeType *newNode(nodeType *prev, dVector nodedat);
+nodeType *newNodeOrig(int size, dVector nodedat);
 void printNode(nodeType *node);
 
 
