@@ -28,7 +28,7 @@ It has two main functions:
 Example:
 
 ```c
-if (newStack() == 0)
+if (!newStack())
 {
 printf("error!\n");
 }
