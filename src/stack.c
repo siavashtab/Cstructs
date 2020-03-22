@@ -19,7 +19,8 @@
  
 #include <stack.h>
  
-int stacksize = INITIAL_StackSize;
+int stacksize;
+stacksize = INITIAL_StackSize;
 nodeType** stack;
 int Stacktop = -1;
 

@@ -39,7 +39,7 @@ typedef struct{
 
 /* subroutines in node_data.c */
 nodeType *newNode(nodeType *prev, dVector nodedat);
-void printNode(nodeType *node)
+void printNode(nodeType *node);
 
 
 #endif /* node_data_H_ */
