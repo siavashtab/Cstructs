@@ -40,6 +40,7 @@ typedef struct{
 /* subroutines in node_data.c */
 nodeType *newNode(nodeType *prev, dVector nodedat);
 nodeType *newNodeOrig(int size, dVector nodedat);
+bool OneGreater2(nodeType *one, nodeType *two);
 void printNode(nodeType *node);
 
 

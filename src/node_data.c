@@ -80,7 +80,21 @@ nodeType *newNodeOrig(int size, dVector nodedat)
 
 }
 
-
+/*
+   This is the sorting comparison for heap sorting of nodes
+*/
+bool OneGreater2(nodeType *one, nodeType *two)
+{
+	if (oneNorm(one->data->data, one->data->vec_size) >
+		oneNorm(two->data->data, two->data->vec_size))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 void printNode(nodeType *node)
 {
