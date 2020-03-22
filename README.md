@@ -25,6 +25,8 @@ It has two main functions:
 
 - Pop: removes and returns the top node from the collection
 
+*All nodes will be added to the stack in a doubly linked-list format
+
 Example:
 
 ```c
