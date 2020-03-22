@@ -26,7 +26,7 @@ It has two main functions:
 - Pop: removes and returns the top node from the collection
 
 Example:
-'''C
+'''ruby
 	if (newStack() == 0)
 	{
 		printf("error!\n");
