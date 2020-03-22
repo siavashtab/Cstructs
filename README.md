@@ -1,5 +1,5 @@
 ## Cstruct
-A C implementation of some useful abstract data types
+A C implementation of some useful doubly linked list-based abstract data types
 
 -----------
 
