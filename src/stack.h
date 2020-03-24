@@ -64,6 +64,11 @@ insert a new node to the stack with dynamically adjucting the size of the stack
 */
 int StackpushDP(nodeType *node);
 
+/*
+free Stack memory
+*/
+void freeStack();
+
 
 
 #endif /* stack_H_ */

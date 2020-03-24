@@ -15,7 +15,9 @@
  
 #include <node_data.h>
 
-
+/*
+	Node constructor form previous node
+*/
 nodeType *newNode(nodeType *prev, dVector nodedat)
 {
 	dataType * data;
@@ -50,6 +52,9 @@ nodeType *newNode(nodeType *prev, dVector nodedat)
 		
 }
 
+/*
+	Node constructor from scratch
+*/
 nodeType *newNodeOrig(int size, dVector nodedat)
 {
 	dataType * data;
@@ -105,4 +110,30 @@ void printNode(nodeType *node)
 	for ( n = 0; n < node->data->vec_size; ++n )
 			printf("%0.4lf, ", node->data->data[n]);
 		printf("\n");
+}
+
+/*
+	free node datatype memory
+*/
+void freedataType(dataType *data)
+{
+	if (data)
+	{
+		if (data->data) mem_free(data->data);
+		mem_free(data);
+	}
+}
+
+/*
+free node memory
+*/
+void freeNode(nodeType *node)
+{
+	if (node)
+	{
+		if (node->data) freedataType(node->data);
+		if (node->nextnode) freedataType(node->nextnode);
+		if (node->prevnode) freedataType(node->prevnode);
+		mem_free(node);
+	}
 }

@@ -99,6 +99,16 @@ int StackpushDP(nodeType * node) {
 }
 
 
-
+void freeStack()
+{
+	if (stack)
+	{
+		for (int i = 0; i < stacksize; ++i)
+		{
+			freeNode(stack[i]);
+		}
+		mem_free(stack);
+	}
+}
 
  
