@@ -62,6 +62,8 @@ nodeType* node4 = newNode(node3, nodedat);
 StackpushDP(node4);
 
 printNode(Stackpeek());
+
+freeStack();
 ```
 Output:
 
