@@ -119,7 +119,6 @@ void freedataType(dataType *data)
 	if (data)
 	{
 		if (data->data) mem_free(data->data);
-		mem_free(data);
 	}
 }
 
@@ -131,6 +130,7 @@ void freeNode(nodeType *node)
 	if (node)
 	{
 		freedataType(node->data);
+		mem_free(node->data);
 		mem_free(node);
 	}
 }

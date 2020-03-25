@@ -82,6 +82,20 @@ int Stackpush(nodeType * node) {
    }
 }
 
+int StackpushOrig(nodeType * node) {
+
+	if (!isStackfull()) {
+		Stacktop = Stacktop + 1;
+		stack[Stacktop] = node;
+		stackfirst = node;
+		return 1;
+	}
+	else {
+		errMsg("Stack", "Stackpush", "stack is empty", 0);
+		return 0;
+	}
+}
+
 int StackpushDP(nodeType * node) {
 
 	if (!isStackfull()) {
