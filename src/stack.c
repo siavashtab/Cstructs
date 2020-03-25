@@ -110,8 +110,7 @@ void freeStack()
 		{
 			nodeType *node = next;
 			next = node->nextnode;
-			freedataType(node->data);
-			mem_free(node);
+			freeNode(node);
 		}
 		
 	}

@@ -128,5 +128,9 @@ free node memory
 */
 void freeNode(nodeType *node)
 {
-
+	if (node)
+	{
+		freedataType(node->data);
+		mem_free(node);
+	}
 }
