@@ -37,12 +37,12 @@ nodeType *newNode(nodeType *prev, dVector nodedat)
 	
 	if( !(new_node->prevnode = (dataType *) mem_malloc (sizeof(dataType))))
 			errMsg("allocation", "newNode", "previous node pointer", 0);
-	new_node->prevnode = prev->data;
+	new_node->prevnode = prev;
 	
 	
 	if( !(new_node->nextnode = (dataType *) mem_malloc (sizeof(dataType))))
 			errMsg("allocation", "newNode", "next node pointer", 0);
-	prev->nextnode = new_node->data;
+	prev->nextnode = new_node;
 	
 	
 	if ( !(new_node->data = (dataType *)mem_malloc(sizeof(dataType))))
@@ -81,7 +81,6 @@ nodeType *newNodeOrig(int size, dVector nodedat)
 	if (!(new_node->data = (dataType *)mem_malloc(sizeof(dataType))))
 		errMsg("allocation", "new_node->data", "next node pointer", 0);
 	new_node->data = data;
-
 
 }
 
@@ -129,11 +128,5 @@ free node memory
 */
 void freeNode(nodeType *node)
 {
-	if (node)
-	{
-		if (node->data) freedataType(node->data);
-		if (node->nextnode) freedataType(node->nextnode);
-		if (node->prevnode) freedataType(node->prevnode);
-		mem_free(node);
-	}
+
 }

@@ -22,6 +22,7 @@
 int stacksize;
 stacksize = INITIAL_StackSize;
 nodeType** stack;
+nodeType*  stackfirst;
 int Stacktop = -1;
 
 int newStack()
@@ -84,12 +85,12 @@ int Stackpush(nodeType * node) {
 int StackpushDP(nodeType * node) {
 
 	if (!isStackfull()) {
-		printf("Warning: Adjusting stack size!\n");
 		Stacktop = Stacktop + 1;
 		stack[Stacktop] = node;
 		return 1;
 	}
 	else {
+		printf("Warning: Adjusting stack size!\n");
 		realloc(stack, sizeof(stack) * 2);
 		stacksize = stacksize + sizeof(stack) * 2;
 		Stacktop = Stacktop + 1;
@@ -103,11 +104,16 @@ void freeStack()
 {
 	if (stack)
 	{
-		for (int i = 0; i < stacksize; ++i)
+		nodeType *next = stackfirst;
+
+		while (next)
 		{
-			freeNode(stack[i]);
+			nodeType *node = next;
+			next = node->nextnode;
+			freedataType(node->data);
+			mem_free(node);
 		}
-		mem_free(stack);
+		
 	}
 }
 

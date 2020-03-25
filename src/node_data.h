@@ -25,16 +25,20 @@
 	It can contain different data formats, but the important feature of our design is that it contains pointers
 	to the previous entry and next entry.
  */
-typedef struct {
+
+typedef struct dataType_ dataType;
+typedef struct nodeType_ nodeType;
+
+struct dataType_{
 	dVector  data;
 	int      vec_size;
-}dataType;
+};
 
-typedef struct{
+struct nodeType_{
 	dataType *  data;
-	dataType * prevnode;
-	dataType * nextnode;
-}nodeType;
+	nodeType * prevnode;
+	nodeType * nextnode;
+};
 
 
 /* subroutines in node_data.c */
