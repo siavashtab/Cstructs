@@ -45,25 +45,20 @@ double nodedat3[3] = { 1.3,3.3,6.3 };
 double nodedat4[3] = { 1.2,3.2,6.2 };
 
 
-dVector nodedat = &nodedat1;
-nodeType* node1 = newNodeOrig(3, nodedat);
+nodeType* node1 = newNodeOrig(3, nodedat1);
 Stackpush(node1);
 
-nodedat = &nodedat2;
-nodeType* node2 = newNode(node1, nodedat);
+nodeType* node2 = newNode(node1, nodedat2);
 Stackpush(node2);
 
-nodedat = &nodedat3;
-nodeType* node3 = newNode(node2, nodedat);
+nodeType* node3 = newNode(node2, nodedat3);
 Stackpush(node3);
 
-nodedat = &nodedat4;
-nodeType* node4 = newNode(node3, nodedat);
+nodeType* node4 = newNode(node3, nodedat4);
 StackpushDP(node4);
 
 printNode(Stackpeek());
 
-freeStack();
 ```
 Output:
 
