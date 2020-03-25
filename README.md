@@ -69,7 +69,6 @@ Output:
 
 ```
 done!
-Warning: Adjusting stack size!
 data size: 3
 node data is:
 1.2000, 3.2000, 6.2000,
