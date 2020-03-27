@@ -30,23 +30,24 @@ It has two main functions:
 Example:
 
 ```c
-if (!newStack())
+if (newStack() == 0)
 {
-printf("error!\n");
+  printf("error!\n");
 }
 else
 {
-printf("done!\n");
+  printf("done!\n");
 }
 
 double nodedat1[3] = { 1.0,3.0,6.0 };
 double nodedat2[3] = { 1.5,3.2,6.4 };
 double nodedat3[3] = { 1.3,3.3,6.3 };
 double nodedat4[3] = { 1.2,3.2,6.2 };
+double nodedat5[3] = { 1.1,3.01,6.2 };
 
 
 nodeType* node1 = newNodeOrig(3, nodedat1);
-Stackpush(node1);
+StackpushOrig(node1);
 
 nodeType* node2 = newNode(node1, nodedat2);
 Stackpush(node2);
@@ -57,7 +58,15 @@ Stackpush(node3);
 nodeType* node4 = newNode(node3, nodedat4);
 StackpushDP(node4);
 
-printNode(Stackpeek());
+nodeType* node5 = newNode(node4, nodedat5);
+StackpushDP(node5);
+
+printNode(Stackpop());
+printNode(Stackpop());
+printNode(Stackpop());
+printNode(Stackpop());
+
+freeStack();
 
 ```
 Output:
