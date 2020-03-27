@@ -108,3 +108,26 @@ void printNode(nodeType *node)
 		printf("\n");
 }
 
+/*
+	free the data structure
+*/
+void freedata(dataType *data)
+{
+	if (data)
+	{
+		if (data->data) mem_free(data->data);
+		mem_free(data);
+	}
+}
+
+/*
+	free the node structure
+*/
+void freenode(nodeType *node)
+{
+	if (node)
+	{
+		freedata(node->data);
+		mem_free(node);
+	}
+}
