@@ -106,7 +106,7 @@ int StackpushDP(nodeType * node) {
 	else {
 		printf("Warning: Adjusting stack size!\n");
 		realloc(stack, sizeof(stack) + 1);
-		stacksize = stacksize + sizeof(stack) + 1;
+		stacksize = stacksize + 1;
 		Stacktop = Stacktop + 1;
 		stack[Stacktop] = node;
 		return 1;
@@ -124,8 +124,9 @@ void freeStack()
 		{
 			nodeType *node = next;
 			next = node->nextnode;
-			if (node && counter < Stacktop)
+			if (node && counter <= Stacktop)
 			{
+				free(node->data);
 				free(node);
 			}
 			else
@@ -135,7 +136,6 @@ void freeStack()
 			counter += 1;
 		}
 		
-		free(stack);
 	}
 }
 
