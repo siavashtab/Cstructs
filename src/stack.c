@@ -62,9 +62,9 @@ nodeType * Stackpop() {
 	nodeType * node;
 
    if(!isStackempty()) {
-	  node = newNode(stack[Stacktop], stack[Stacktop]->data);
+	  free(stack[Stacktop]);
 	  Stacktop = Stacktop - 1;
-      return node;
+      return stack[Stacktop];
    } else {
 	   errMsg("Stack", "Stackpop", "stack is empty", 0);
    }
@@ -105,8 +105,8 @@ int StackpushDP(nodeType * node) {
 	}
 	else {
 		printf("Warning: Adjusting stack size!\n");
-		realloc(stack, sizeof(stack) * 2);
-		stacksize = stacksize + sizeof(stack) * 2;
+		realloc(stack, sizeof(stack) + 1);
+		stacksize = stacksize + sizeof(stack) + 1;
 		Stacktop = Stacktop + 1;
 		stack[Stacktop] = node;
 		return 1;
@@ -119,14 +119,23 @@ void freeStack()
 	if (stack)
 	{
 		nodeType *next = stackfirst;
-
+		int counter = 0;
 		while (next)
 		{
 			nodeType *node = next;
 			next = node->nextnode;
-			freeNode(node);
+			if (node && counter < Stacktop)
+			{
+				free(node);
+			}
+			else
+			{
+				break;
+			}
+			counter += 1;
 		}
 		
+		free(stack);
 	}
 }
 
