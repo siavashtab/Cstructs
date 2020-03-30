@@ -73,6 +73,14 @@ nodeType * Heappop() {
 int Heappush(nodeType * node) {
 
    if(!isHeapfull()) {
+	   int i = 0;
+	   for (; i < heapsize; i++)
+	   {
+		   if (OneGreater2(heap[i],node))
+		   {
+
+		   }
+	   }
 	   Heaptop = Heaptop + 1;
 	   heap[Heaptop] = node;
 	   return 1;
