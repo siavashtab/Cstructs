@@ -78,7 +78,9 @@ int Heappush(nodeType * node) {
 	   {
 		   if (OneGreater2(heap[i],node))
 		   {
-
+			   // shift elements forward 
+			   for (int j = heapsize; j >= i; j--)
+				   heap[j] = heap[j - 1];
 		   }
 	   }
 	   Heaptop = Heaptop + 1;
