@@ -99,8 +99,7 @@ int StackpushOrig(nodeType * node) {
 int StackpushDP(nodeType * node) {
 
 	if (!isStackfull()) {
-		Stacktop = Stacktop + 1;
-		stack[Stacktop] = node;
+		Stackpush(node);
 		return 1;
 	}
 	else {

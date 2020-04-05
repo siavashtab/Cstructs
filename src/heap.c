@@ -73,18 +73,20 @@ nodeType * Heappop() {
 int Heappush(nodeType * node) {
 
    if(!isHeapfull()) {
-	   int i = 0;
-	   for (; i < heapsize; i++)
+	   for (int i = 0; i < heapsize; i++)
 	   {
 		   if (OneGreater2(heap[i],node))
 		   {
 			   // shift elements forward 
 			   for (int j = heapsize; j >= i; j--)
 				   heap[j] = heap[j - 1];
+			   Heaptop = Heaptop + 1;
+			   heap[i] = node;
+			   if (i == 0)
+				   heapfirst = node;
+			   break;
 		   }
 	   }
-	   Heaptop = Heaptop + 1;
-	   heap[Heaptop] = node;
 	   return 1;
    } else {
 	   errMsg("Stack", "Stackpush", "stack is empty", 0);
@@ -95,14 +97,13 @@ int Heappush(nodeType * node) {
 int HeappushDP(nodeType * node) {
 
 	if (!isHeapfull()) {
-		printf("Warning: Adjusting stack size!\n");
-		Heaptop = Heaptop + 1;
-		heap[Heaptop] = node;
+		Heappush(node);
 		return 1;
 	}
 	else {
-		realloc(heap, sizeof(heap) * 2);
-		heapsize = heapsize + sizeof(heap) * 2;
+		printf("Warning: Adjusting stack size!\n");
+		realloc(heap, sizeof(heap) + 1);
+		heapsize = heapsize + 1;
 		Heaptop = Heaptop + 1;
 		heap[Heaptop] = node;
 		return 1;
