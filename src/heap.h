@@ -69,6 +69,9 @@ insert a new node to the heap with dynamically adjucting the size of the heap
 */
 int HeappushDP(nodeType *node);
 
-
+/*
+free the memory of the heap
+*/
+void freeHeap();
 
 #endif /* heap_H_ */

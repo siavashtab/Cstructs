@@ -103,14 +103,35 @@ int HeappushDP(nodeType * node) {
 	else {
 		printf("Warning: Adjusting stack size!\n");
 		realloc(heap, sizeof(heap) + 1);
-		heapsize = heapsize + 1;
-		Heaptop = Heaptop + 1;
-		heap[Heaptop] = node;
+		Heappush(node);
 		return 1;
 	}
 }
 
 
+void freeHeap()
+{
+	if (heap)
+	{
+		nodeType *next = heapfirst;
+		int counter = 0;
+		while (next)
+		{
+			nodeType *node = next;
+			next = node->nextnode;
+			if (node && counter <= Heaptop)
+			{
+				free(node->data);
+				free(node);
+			}
+			else
+			{
+				break;
+			}
+			counter += 1;
+		}
 
+	}
+}
 
  
