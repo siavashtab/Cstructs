@@ -60,6 +60,48 @@ insert a new node to the heap without changing the size of the heap
 int Heappush(nodeType *node);
 
 /*
+return the left child
+*/
+int HeapLeft(int parent);
+
+/*
+return the right child
+*/
+int HeapRight(int parent);
+
+/*
+return the parent
+*/
+int HeapParent(int child);
+
+/*
+return the left child node
+*/
+int HeapLeftNode(int parent);
+
+/*
+return the right child
+*/
+int HeapRightNode(int parent);
+
+/*
+return the parent
+*/
+int HeapParentNode(int child);
+
+/*
+Heapify the heap from down to top (when new index inserted)
+*/
+int HeapifyUp(int index);
+
+/*
+Heapify the heap from up to down (when an index removed)
+*/
+int HeapifyDown(int index);
+
+
+
+/*
 insert a new node to the heap in a predefined posititon (int pos)
 */
 int Heapinsert(nodeType *node, int pos);

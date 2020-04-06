@@ -29,7 +29,7 @@ int newHeap()
 {
 	if (!(heap = (nodeType**)arr_alloc(heapsize, nodeType*)))
 	{
-		errMsg("newStack()", "stack", "data allocation", 0);
+		errMsg("newHeap()", "heap", "data allocation", 0);
 		return 0;
 	}
 	else
@@ -38,6 +38,64 @@ int newHeap()
 	}
 }
  
+int HeapLeft(int parent)
+{
+	int left = 2 * parent + 1;
+	if (left < heapsize)
+	{
+		return left;
+	}
+	else
+	{
+		errMsg("HeapLeft", "heap", "Return left child", 1);
+		return 0;
+	}
+}
+
+
+int HeapRight(int parent)
+{
+	int right = 2 * parent + 2;
+	if (right < heapsize)
+	{
+		return right;
+	}
+	else
+	{
+		errMsg("HeapRight", "heap", "Return right child", 1);
+		return 0;
+	}
+}
+
+int HeapParent(int child)
+{
+	if (child == 0)
+	{
+		errMsg("HeapParent", "heap", "the asked child is the root node (doesn't have parent)!", 1);
+		return 0;
+	}
+	else
+	{
+		int parent = (child - 1) / 2;
+		return parent;
+	}
+}
+
+int HeapLeftNode(int parent)
+{
+	return heap[HeapLeft(parent)];
+}
+
+int HeapRightNode(int parent)
+{
+	return heap[HeapRight(parent)];
+}
+
+int HeapParentNode(int child)
+{
+	return heap[HeapParent(child)];
+}
+
  int isHeapempty() {
 
    if(Heaptop == -1)
