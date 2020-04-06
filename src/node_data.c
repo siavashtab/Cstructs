@@ -82,13 +82,20 @@ nodeType *newNodeOrig(int size, dVector nodedat)
 }
 
 /*
+  Retunrn the norm measure of the node (This funciton basically can be changed into any measure that can show content of the node)
+*/
+double NodeNorm(nodeType *one)
+{
+	return oneNorm(one->data->data, one->data->vec_size);
+}
+
+/*
    This is the sorting comparison for heap sorting of nodes
    The current comparison is based on the twoNorm of the data vector
 */
 bool OneGreater2(nodeType *one, nodeType *two)
 {
-	if (oneNorm(one->data->data, one->data->vec_size) >
-		oneNorm(two->data->data, two->data->vec_size))
+	if (NodeNorm(one) > NodeNorm(two))
 	{
 		return true;
 	}
