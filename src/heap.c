@@ -127,14 +127,14 @@ nodeType * Heappop()
 	  node = newNode(heap[Heaptop], heap[Heaptop]->data);
 	  Heaptop = Heaptop - 1;
 	  if(Heaptop >= 0) Heaptop = heap[Heaptop];
-	  HeapifyDown(0);
+	  HeapBubbleDown(0);
       return node;
    } else {
 	   errMsg("Heap", "Heappop", "heap is empty", 0);
    }
 }
 
-void HeapifyUp(int index)
+void HeapBubbleUp(int index)
 {
 	if (index >= 0 && HeapParent(index) >=0 &&
 		OneGreater2(heap[HeapParent(index)], heap[index]))
@@ -146,11 +146,11 @@ void HeapifyUp(int index)
 		if(index < heapsize) heap[index]->nextnode = heap[index + 1];
 		if (HeapParent(index) > 0) heap[HeapParent(index)]->prevnode = heap[HeapParent(index) - 1];
 		if (HeapParent(index) < heapsize) heap[HeapParent(index)]->nextnode = heap[HeapParent(index) + 1];
-		HeapifyUp(HeapParent(index));
+		HeapBubbleUp(HeapParent(index));
 	}
 }
 
-void HeapifyDown(int index)
+void HeapBubbleDown(int index)
 {
 	int left = HeapLeft(index);
 	int right = HeapRight(index);
@@ -169,7 +169,7 @@ void HeapifyDown(int index)
 		if (index < heapsize) heap[index]->nextnode = heap[index + 1];
 		if (left > 0) heap[left]->prevnode = heap[left - 1];
 		if (left < heapsize) heap[left]->nextnode = heap[left + 1];
-		HeapifyUp(left);
+		HeapBubbleDown(left);
 	}
 }
 
@@ -179,7 +179,7 @@ int Heappush(nodeType * node)
    if(!isHeapfull()) {
 	   Heaptop = Heaptop + 1;
 	   heap[Heaptop] = node;
-	   HeapifyUp(Heaptop);
+	   HeapBubbleUp(Heaptop);
 	   return 1;
    } else {
 	   errMsg("Heap", "Heappush", "heap is empty", 0);
