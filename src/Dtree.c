@@ -17,19 +17,19 @@
  *=====================================================*/
  
  
-#include <stack.h>
+#include <Dtree.h>
  
-int stacksize;
-stacksize = INITIAL_StackSize;
-nodeType** stack;
-nodeType*  stackfirst;
-int Stacktop = -1;
+int Dtreesize;
+stacksize = INITIAL_DtreeSize;
+nodeType** dtree;
+nodeType*  dtreefirst;
+int Dtreetop = -1;
 
-int newStack()
+int newDtree()
 {
-	if (!(stack = (nodeType**)arr_alloc(stacksize, nodeType*)))
+	if (!(dtree = (nodeType**)arr_alloc(dtreesize, nodeType*)))
 	{
-		errMsg("newStack()", "stack", "data allocation", 0);
+		errMsg("newDtree()", "dtree", "data allocation", 0);
 		return 0;
 	}
 	else
@@ -38,92 +38,92 @@ int newStack()
 	}
 }
  
- int isStackempty() {
+ int isDtreeempty() {
 
-   if(Stacktop == -1)
+   if(Dtreetop == -1)
       return 1;
    else
       return 0;
 }
    
-int isStackfull() {
+int isDtreefull() {
 
-   if(Stacktop == stacksize)
+   if(Dtreetop == dtreesize)
       return 1;
    else
       return 0;
 }
 
-nodeType * Stackpeek() {
-   return stack[Stacktop];
+nodeType * Dtreepeek() {
+   return dtree[Dtreetop];
 }
 
-nodeType * Stackpop() {
+nodeType * Dtreepop() {
 	nodeType * node;
 
-   if(!isStackempty()) {
-	  free(stack[Stacktop]);
-	  Stacktop = Stacktop - 1;
-      return stack[Stacktop];
+   if(!isDtreeempty()) {
+	  free(dtree[Dtreetop]);
+	  Dtreetop = Dtreetop - 1;
+      return dtree[Dtreetop];
    } else {
-	   errMsg("Stack", "Stackpop", "stack is empty", 0);
+	   errMsg("Dtree", "Dtreepop", "dtree is empty", 0);
    }
 }
 
-int Stackpush(nodeType * node) {
+int Dtreepush(nodeType * node) {
 
-   if(!isStackfull()) {
-	   Stacktop = Stacktop + 1;
-	   stack[Stacktop] = node;
+   if(!isDtreefull()) {
+	   Dtreetop = Dtreetop + 1;
+	   dtree[Dtreetop] = node;
 	   return 1;
    } else {
-	   errMsg("Stack", "Stackpush", "stack is empty", 0);
+	   errMsg("Dtree", "Dtreepush", "dtree is empty", 0);
 	   return 0;
    }
 }
 
-int StackpushOrig(nodeType * node) {
+int DtreepushOrig(nodeType * node) {
 
-	if (!isStackfull()) {
-		Stacktop = Stacktop + 1;
-		stack[Stacktop] = node;
-		stackfirst = node;
+	if (!isDtreefull()) {
+		Dtreetop = Dtreetop + 1;
+		dtree[Dtreetop] = node;
+		dtreefirst = node;
 		return 1;
 	}
 	else {
-		errMsg("Stack", "Stackpush", "stack is empty", 0);
+		errMsg("Dtree", "Dtreepush", "dtree is empty", 0);
 		return 0;
 	}
 }
 
-int StackpushDP(nodeType * node) {
+int DtreepushDP(nodeType * node) {
 
-	if (!isStackfull()) {
-		Stackpush(node);
+	if (!isDtreefull()) {
+		Dtreepush(node);
 		return 1;
 	}
 	else {
-		printf("Warning: Adjusting stack size!\n");
-		realloc(stack, sizeof(stack) + 1);
-		stacksize = stacksize + 1;
-		Stacktop = Stacktop + 1;
-		stack[Stacktop] = node;
+		printf("Warning: Adjusting Dtree size!\n");
+		realloc(dtree, sizeof(dtree) + 1);
+		dtreesize = dtreesize + 1;
+		Dtreetop = Dtreetop + 1;
+		dtree[Dtreetop] = node;
 		return 1;
 	}
 }
 
 
-void freeStack()
+void freeDtree()
 {
-	if (stack)
+	if (dtree)
 	{
-		nodeType *next = stackfirst;
+		nodeType *next = dtreefirst;
 		int counter = 0;
 		while (next)
 		{
 			nodeType *node = next;
 			next = node->nextnode;
-			if (node && counter <= Stacktop)
+			if (node && counter <= Dtreetop)
 			{
 				free(node->data);
 				free(node);

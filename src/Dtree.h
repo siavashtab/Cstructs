@@ -32,42 +32,42 @@
 /*
    newStack is the stack  constructor 
 */
-int newStack();
+int newDtree();
 
 /*
 isStackempty checks if a stack is empty or not
 */
-int isStackempty();
+int isDtreeempty();
 
 /*
 isStackfull checks if a stack is full of not based on the stacksize
 */
-int isStackfull();
+int isDtreefull();
 
 /*
 Stackpeek returns the top node of the stack
 */
-nodeType * Stackpeek();
+nodeType * Dtreepeek();
 
 /*
 Stackpop returns the top node of the stack and remove it from the stack
 */
-nodeType * Stackpop();
+nodeType * Dtreepop();
 
 /*
 insert a new node to the stack without changing the size of the stack
 */
-int Stackpush(nodeType *node);
+int Dtreepush(nodeType *node);
 
 /*
 insert a new node to the stack with dynamically adjucting the size of the stack
 */
-int StackpushDP(nodeType *node);
+int DtreepushDP(nodeType *node);
 
 /*
 free Stack memory
 */
-void freeStack();
+void freeDtree();
 
 
 
