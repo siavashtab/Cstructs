@@ -47,8 +47,8 @@ int HeapLeft(int parent)
 	}
 	else
 	{
-		errMsg("HeapLeft", "heap", "Return left child", 1);
-		return 0;
+		errMsg("HeapLeft", "heap", "Return left child", 0);
+		return -1;
 	}
 }
 
@@ -62,8 +62,8 @@ int HeapRight(int parent)
 	}
 	else
 	{
-		errMsg("HeapRight", "heap", "Return right child", 1);
-		return 0;
+		errMsg("HeapRight", "heap", "Return right child", 0);
+		return -1;
 	}
 }
 
@@ -71,8 +71,8 @@ int HeapParent(int child)
 {
 	if (child == 0)
 	{
-		errMsg("HeapParent", "heap", "the asked child is the root node (doesn't have parent)!", 1);
-		return 0;
+		errMsg("HeapParent", "heap", "the asked child is the root node (doesn't have parent)!", 0);
+		return -1;
 	}
 	else
 	{
@@ -96,7 +96,8 @@ int HeapParentNode(int child)
 	return heap[HeapParent(child)];
 }
 
- int isHeapempty() {
+int isHeapempty() 
+{
 
    if(Heaptop == -1)
       return 1;
@@ -104,7 +105,8 @@ int HeapParentNode(int child)
       return 0;
 }
    
-int isHeapfull() {
+int isHeapfull() 
+{
 
    if(Heaptop == heapsize)
       return 1;
@@ -112,11 +114,13 @@ int isHeapfull() {
       return 0;
 }
 
-nodeType * Heappeek() {
+nodeType * Heappeek() 
+{
    return heap[Heaptop];
 }
 
-nodeType * Heappop() {
+nodeType * Heappop() 
+{
 	nodeType * node;
 
    if(!isStackempty()) {
@@ -149,12 +153,12 @@ void HeapifyDown(int index)
 	int left = HeapLeft(index);
 	int right = HeapRight(index);
 
-	if (left >= 0 && right >= 0 && OneGreater2(left,right))
+	if (left >= 0 && right >= 0 && OneGreater2(heap[left],heap[right]))
 	{
 		left = right;
 	}
 
-	if (left >=0 && OneGreater2(left, right))
+	if (left >=0 && OneGreater2(index, heap[left]))
 	{
 		nodeType * temp = heap[index];
 		heap[index] = heap[left];
@@ -167,7 +171,8 @@ void HeapifyDown(int index)
 	}
 }
 
-int Heappush(nodeType * node) {
+int Heappush(nodeType * node) 
+{
 
    if(!isHeapfull()) {
 	   for (int i = 0; i < heapsize; i++)
@@ -191,13 +196,16 @@ int Heappush(nodeType * node) {
    }
 }
 
-int HeappushDP(nodeType * node) {
+int HeappushDP(nodeType * node) 
+{
 
-	if (!isHeapfull()) {
+	if (!isHeapfull()) 
+	{
 		Heappush(node);
 		return 1;
 	}
-	else {
+	else 
+	{
 		printf("Warning: Adjusting stack size!\n");
 		realloc(heap, sizeof(heap) + 1);
 		Heappush(node);
@@ -205,6 +213,14 @@ int HeappushDP(nodeType * node) {
 	}
 }
 
+void HeapPrint()
+{
+	for (int h = 0; h < heapsize; h++)
+	{
+		printf("idx:%i - Norm:%d - Left: %i Right:%i - Parent:%i \n", h, NodeNorm(heap[h]),
+			HeapLeft(h), HeapRight(h), HeapParent(h));
+	}
+}
 
 void freeHeap()
 {

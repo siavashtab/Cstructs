@@ -107,6 +107,11 @@ insert a new node to the heap in a predefined posititon (int pos)
 int Heapinsert(nodeType *node, int pos);
 
 /*
+print the heap
+*/
+void HeapPrint();
+
+/*
 insert a new node to the heap with dynamically adjucting the size of the heap
 */
 int HeappushDP(nodeType *node);
