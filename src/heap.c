@@ -114,7 +114,7 @@ int isHeapfull()
       return 0;
 }
 
-nodeType * Heappeek() 
+nodeType * HeapMin() 
 {
    return heap[Heaptop];
 }
@@ -123,9 +123,11 @@ nodeType * Heappop()
 {
 	nodeType * node;
 
-   if(!isStackempty()) {
+   if(!isHeapempty()) {
 	  node = newNode(heap[Heaptop], heap[Heaptop]->data);
 	  Heaptop = Heaptop - 1;
+	  if(Heaptop >= 0) Heaptop = heap[Heaptop];
+	  HeapifyDown(0);
       return node;
    } else {
 	   errMsg("Heap", "Heappop", "heap is empty", 0);
@@ -175,20 +177,9 @@ int Heappush(nodeType * node)
 {
 
    if(!isHeapfull()) {
-	   for (int i = 0; i < heapsize; i++)
-	   {
-		   if (OneGreater2(heap[i],node))
-		   {
-			   // shift elements forward 
-			   for (int j = heapsize; j >= i; j--)
-				   heap[j] = heap[j - 1];
-			   Heaptop = Heaptop + 1;
-			   heap[i] = node;
-			   if (i == 0)
-				   heapfirst = node;
-			   break;
-		   }
-	   }
+	   Heaptop = Heaptop + 1;
+	   heap[Heaptop] = node;
+	   HeapifyUp(heapsize - 1);
 	   return 1;
    } else {
 	   errMsg("Heap", "Heappush", "heap is empty", 0);

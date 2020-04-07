@@ -47,7 +47,7 @@ int isHeapfull();
 /*
 Stackpeek returns the top node of the heap
 */
-nodeType * Heappeek();
+nodeType * HeapMin();
 
 /*
 Stackpop returns the top node of the heap and remove it from the heap
