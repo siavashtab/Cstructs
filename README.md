@@ -146,5 +146,7 @@ idx:3 - Norm:11.100000l - Left: -1 Right:-1 - Parent:1
 -------
 ## Useful References:
 1 - C Programming: Advanced: https://faculty.washington.edu/jstraub/advc/index.html
+
 2 - C Programming: Data Structures and Algorithms: https://faculty.washington.edu/jstraub/dsa/index.html
+
 1 - A C++ implementation of heap with integer data types: https://www.tutorialspoint.com/cplusplus-program-to-implement-binary-heap
