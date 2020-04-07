@@ -3,7 +3,7 @@
 /*=====================================================\
  * heap.c
  *
- *   C implementation of the sack abstract data type
+ *   C implementation of the binary heap abstract data type
  *          using doubly linked list
  *
  *
@@ -124,8 +124,47 @@ nodeType * Heappop() {
 	  Heaptop = Heaptop - 1;
       return node;
    } else {
-	   errMsg("Stack", "Stackpop", "stack is empty", 0);
+	   errMsg("Heap", "Heappop", "heap is empty", 0);
    }
+}
+
+void HeapifyUp(int index)
+{
+	if (index >= 0 && HeapParent(index) >=0 &&
+		OneGreater2(heap[HeapParent(index)], heap[index]))
+	{
+		nodeType * temp = heap[index];
+		heap[index] = heap[HeapParent(index)];
+		heap[HeapParent(index)] = temp;
+		if (index > 0) heap[index]->prevnode = heap[index - 1];
+		if(index < heapsize) heap[index]->nextnode = heap[index + 1];
+		if (HeapParent(index) > 0) heap[HeapParent(index)]->prevnode = heap[HeapParent(index) - 1];
+		if (HeapParent(index) < heapsize) heap[HeapParent(index)]->nextnode = heap[HeapParent(index) + 1];
+		HeapifyUp(HeapParent(index));
+	}
+}
+
+void HeapifyDown(int index)
+{
+	int left = HeapLeft(index);
+	int right = HeapRight(index);
+
+	if (left >= 0 && right >= 0 && OneGreater2(left,right))
+	{
+		left = right;
+	}
+
+	if (left >=0 && OneGreater2(left, right))
+	{
+		nodeType * temp = heap[index];
+		heap[index] = heap[left];
+		heap[left] = temp;
+		if (index > 0) heap[index]->prevnode = heap[index - 1];
+		if (index < heapsize) heap[index]->nextnode = heap[index + 1];
+		if (left > 0) heap[left]->prevnode = heap[left - 1];
+		if (left < heapsize) heap[left]->nextnode = heap[left + 1];
+		HeapifyUp(left);
+	}
 }
 
 int Heappush(nodeType * node) {
@@ -147,7 +186,7 @@ int Heappush(nodeType * node) {
 	   }
 	   return 1;
    } else {
-	   errMsg("Stack", "Stackpush", "stack is empty", 0);
+	   errMsg("Heap", "Heappush", "heap is empty", 0);
 	   return 0;
    }
 }

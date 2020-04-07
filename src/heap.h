@@ -92,12 +92,12 @@ int HeapParentNode(int child);
 /*
 Heapify the heap from down to top (when new index inserted)
 */
-int HeapifyUp(int index);
+void HeapifyUp(int index);
 
 /*
 Heapify the heap from up to down (when an index removed)
 */
-int HeapifyDown(int index);
+void HeapifyDown(int index);
 
 
 
