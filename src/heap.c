@@ -41,13 +41,13 @@ int newHeap()
 int HeapLeft(int parent)
 {
 	int left = 2 * parent + 1;
-	if (left < heapsize)
+	if (left <= Heaptop)
 	{
 		return left;
 	}
 	else
 	{
-		errMsg("HeapLeft", "heap", "Return left child", 0);
+		printf("there is no left child!\n");
 		return -1;
 	}
 }
@@ -56,13 +56,13 @@ int HeapLeft(int parent)
 int HeapRight(int parent)
 {
 	int right = 2 * parent + 2;
-	if (right < heapsize)
+	if (right <= Heaptop)
 	{
 		return right;
 	}
 	else
 	{
-		errMsg("HeapRight", "heap", "Return right child", 0);
+		printf("there is no right child!\n");
 		return -1;
 	}
 }
@@ -71,7 +71,7 @@ int HeapParent(int child)
 {
 	if (child == 0)
 	{
-		errMsg("HeapParent", "heap", "the asked child is the root node (doesn't have parent)!", 0);
+		printf("the asked child is the root node(doesn't have parent)!\n");
 		return -1;
 	}
 	else
@@ -179,12 +179,20 @@ int Heappush(nodeType * node)
    if(!isHeapfull()) {
 	   Heaptop = Heaptop + 1;
 	   heap[Heaptop] = node;
-	   HeapifyUp(heapsize - 1);
+	   HeapifyUp(Heaptop);
 	   return 1;
    } else {
 	   errMsg("Heap", "Heappush", "heap is empty", 0);
 	   return 0;
    }
+}
+
+int HeappushOrig(nodeType * node)
+{
+	Heaptop = Heaptop + 1;
+	heap[Heaptop] = node;
+	heapfirst = node;
+	return 1;
 }
 
 int HeappushDP(nodeType * node) 
@@ -206,9 +214,9 @@ int HeappushDP(nodeType * node)
 
 void HeapPrint()
 {
-	for (int h = 0; h < heapsize; h++)
+	for (int h = 0; h <= Heaptop; h++)
 	{
-		printf("idx:%i - Norm:%d - Left: %i Right:%i - Parent:%i \n", h, NodeNorm(heap[h]),
+		printf("idx:%i - Norm:%fl - Left: %i Right:%i - Parent:%i \n", h, NodeNorm(heap[h]),
 			HeapLeft(h), HeapRight(h), HeapParent(h));
 	}
 }
