@@ -90,6 +90,14 @@ double NodeNorm(nodeType *one)
 }
 
 /*
+Retunrn the return measure of the node (This funciton basically can be changed into any measure that can show content of the node)
+*/
+double NodeReturn(nodeType *one)
+{
+	return NodeNorm(one);
+}
+
+/*
    This is the sorting comparison for heap sorting of nodes
    The current comparison is based on the twoNorm of the data vector
 */

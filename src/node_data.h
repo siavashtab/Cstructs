@@ -45,6 +45,7 @@ struct nodeType_{
 nodeType *newNode(nodeType *prev, dVector nodedat);
 nodeType *newNodeOrig(int size, dVector nodedat);
 double NodeNorm(nodeType *one);
+double NodeReturn(nodeType *one);
 bool OneGreater2(nodeType *one, nodeType *two);
 void freedata(dataType *data);
 void freenode(nodeType *node);
