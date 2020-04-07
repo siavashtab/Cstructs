@@ -80,7 +80,7 @@ node data is:
 
 -------
 
-## 1- Binary Heap
+## 2- Binary Heap
 
 Binary Heap is a collection of data sorted in a binary tree format. 
 It has two main functions:
@@ -94,35 +94,35 @@ It has two main functions:
 Example:
 
 ```c
-	if (!newHeap())
-	{
-		printf("error!\n");
-	}
-	else
-	{
-		printf("done!\n");
-	}
+if (!newHeap())
+{
+	printf("error!\n");
+}
+else
+{
+	printf("done!\n");
+}
 
-	double nodedat1[3] = { 1.0,3.0,6.0 };
-	double nodedat2[3] = { 1.5,3.2,6.4 };
-	double nodedat3[3] = { 1.3,3.3,5.3 };
-	double nodedat4[3] = { 1.2,3.2,3.2 };
-	double nodedat5[3] = { 1.1,3.01,10.2 };
+double nodedat1[3] = { 1.0,3.0,6.0 };
+double nodedat2[3] = { 1.5,3.2,6.4 };
+double nodedat3[3] = { 1.3,3.3,5.3 };
+double nodedat4[3] = { 1.2,3.2,3.2 };
+double nodedat5[3] = { 1.1,3.01,10.2 };
 
-	
-	nodeType* node1 = newNodeOrig(3, nodedat1);
-	HeappushOrig(node1);
-	
-	nodeType* node2 = newNode(node1, nodedat2);
-	Heappush(node2);
 
-	nodeType* node3 = newNode(node2, nodedat3);
-	Heappush(node3);
+nodeType* node1 = newNodeOrig(3, nodedat1);
+HeappushOrig(node1);
 
-	nodeType* node4 = newNode(node3, nodedat4);
-	Heappush(node4);
+nodeType* node2 = newNode(node1, nodedat2);
+Heappush(node2);
 
-	HeapPrint();
+nodeType* node3 = newNode(node2, nodedat3);
+Heappush(node3);
+
+nodeType* node4 = newNode(node3, nodedat4);
+Heappush(node4);
+
+HeapPrint();
 
 ```
 Output:
