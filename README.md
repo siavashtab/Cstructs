@@ -80,7 +80,7 @@ node data is:
 
 -------
 
-## 2- Binary Heap
+## 2- Binary Min-Heap
 
 Binary Heap is a collection of data sorted in a binary tree format. 
 It has two main functions:
