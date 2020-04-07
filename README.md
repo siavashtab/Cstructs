@@ -124,6 +124,8 @@ Heappush(node4);
 
 HeapPrint();
 
+freeHeap();
+
 ```
 Output:
 
