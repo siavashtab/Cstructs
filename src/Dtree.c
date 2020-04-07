@@ -12,7 +12,7 @@
  *
  *
  *
- *  Created on: March 8, 2020
+ *  Created on: April 7, 2020
  *      Author: Siavash Tabrizian
  *=====================================================*/
  
@@ -70,7 +70,7 @@ nodeType * Dtreepop() {
    }
 }
 
-int Dtreepush(nodeType * node) {
+int Dtreepush(nodeType * node, double probability) {
 
    if(!isDtreefull()) {
 	   Dtreetop = Dtreetop + 1;
@@ -96,7 +96,7 @@ int DtreepushOrig(nodeType * node) {
 	}
 }
 
-int DtreepushDP(nodeType * node) {
+int DtreepushDP(nodeType * node, double probability) {
 
 	if (!isDtreefull()) {
 		Dtreepush(node);

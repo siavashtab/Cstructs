@@ -38,6 +38,8 @@ struct nodeType_{
 	dataType *  data;
 	nodeType * prevnode;
 	nodeType * nextnode;
+	double EV;
+	double probability;
 };
 
 
