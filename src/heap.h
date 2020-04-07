@@ -2,7 +2,7 @@
 /*=====================================================\
 * heap.h
 *
-*   C implementation of the sack abstract data type
+*   C implementation of the binary heap abstract data type
 *          using doubly linked list
 *
 *
@@ -45,9 +45,9 @@ isStackfull checks if a heap is full of not based on the stacksize
 int isHeapfull();
 
 /*
-Stackpeek returns the top node of the heap
+Stackpeek returns the root node of the heap
 */
-nodeType * HeapMin();
+nodeType * HeapRoot();
 
 /*
 Stackpop returns the top node of the heap and remove it from the heap
@@ -77,17 +77,17 @@ int HeapParent(int child);
 /*
 return the left child node
 */
-int HeapLeftNode(int parent);
+nodeType* HeapLeftNode(int parent);
 
 /*
 return the right child
 */
-int HeapRightNode(int parent);
+nodeType* HeapRightNode(int parent);
 
 /*
 return the parent
 */
-int HeapParentNode(int child);
+nodeType* HeapParentNode(int child);
 
 /*
 Heapify the heap from down to top (when new index inserted)

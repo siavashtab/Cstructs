@@ -81,17 +81,17 @@ int HeapParent(int child)
 	}
 }
 
-int HeapLeftNode(int parent)
+nodeType* HeapLeftNode(int parent)
 {
 	return heap[HeapLeft(parent)];
 }
 
-int HeapRightNode(int parent)
+nodeType* HeapRightNode(int parent)
 {
 	return heap[HeapRight(parent)];
 }
 
-int HeapParentNode(int child)
+nodeType* HeapParentNode(int child)
 {
 	return heap[HeapParent(child)];
 }
@@ -114,7 +114,7 @@ int isHeapfull()
       return 0;
 }
 
-nodeType * HeapMin() 
+nodeType * HeapRoot() 
 {
    return heap[Heaptop];
 }
