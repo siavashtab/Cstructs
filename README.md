@@ -89,7 +89,7 @@ It has two main functions:
 
 - Pop: removes and returns the top node from the collection and heapify the heap from up to down
 
-*All nodes will be added to the binary heap in a doubly linked-list format (linked to the node in the same level of the heap)
+*All nodes will be added to the binary heap in a doubly linked-list format (linked to neighbor nodes in the same level of the heap)
 
 Example:
 
