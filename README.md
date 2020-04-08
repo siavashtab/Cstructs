@@ -7,7 +7,7 @@ A C implementation of some useful doubly linked list-based abstract data types
 
 -----------
 
-In all data structures there is a node object 
+In all of the data structures of this implementation, there is a node object 
 which contains the main data that have to be stored.
 For different purposes you can modify this  - based on the data that you want to store - 
 in order to use these data structures.
