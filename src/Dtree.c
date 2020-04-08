@@ -20,7 +20,7 @@
 #include <Dtree.h>
  
 int Dtreesize;
-stacksize = INITIAL_DtreeSize;
+dtreesize = INITIAL_DtreeSize;
 nodeType** dtree;
 nodeType*  dtreefirst;
 int Dtreetop = -1;
@@ -58,22 +58,33 @@ nodeType * Dtreepeek() {
    return dtree[Dtreetop];
 }
 
-nodeType * Dtreepop() {
-	nodeType * node;
-
-   if(!isDtreeempty()) {
-	  free(dtree[Dtreetop]);
-	  Dtreetop = Dtreetop - 1;
-      return dtree[Dtreetop];
-   } else {
-	   errMsg("Dtree", "Dtreepop", "dtree is empty", 0);
-   }
+double DtreeEVnode(int index)
+{
+	return dtree[index]->EV;
 }
 
-int Dtreepush(nodeType * node, double probability) {
+double DtreeEV()
+{
+	return dtreefirst->EV;
+}
+
+
+void ExpectUp(int index)
+{
+	if (index > 0)
+	{
+		dtree[index]->prevnode->EV = dtree[index]->prevnode->EV + dtree[index]->prevnode->probability * dtree[index]->EV;
+		ExpectUp(index - 1);
+	}
+}
+
+
+int Dtreepush(nodeType * node) {
 
    if(!isDtreefull()) {
 	   Dtreetop = Dtreetop + 1;
+	   node->index = Dtreetop;
+	   node->EV = node->probability * NodeReturn(node);
 	   dtree[Dtreetop] = node;
 	   return 1;
    } else {
@@ -86,6 +97,8 @@ int DtreepushOrig(nodeType * node) {
 
 	if (!isDtreefull()) {
 		Dtreetop = Dtreetop + 1;
+		node->index = Dtreetop;
+		node->EV = node->probability * NodeReturn(node);
 		dtree[Dtreetop] = node;
 		dtreefirst = node;
 		return 1;
@@ -96,7 +109,7 @@ int DtreepushOrig(nodeType * node) {
 	}
 }
 
-int DtreepushDP(nodeType * node, double probability) {
+int DtreepushDP(nodeType * node) {
 
 	if (!isDtreefull()) {
 		Dtreepush(node);

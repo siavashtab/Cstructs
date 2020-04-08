@@ -21,51 +21,67 @@
 #include <stdio.h>
 #include <node_data.h>
 
-#define INITIAL_StackSize 3
+#define INITIAL_DtreeSize 5
  
 
 
 /*
-  Stack subroutines:
+  Dtree subroutines:
 */
 
 /*
-   newStack is the stack  constructor 
+   newDtree is the dtree  constructor 
 */
 int newDtree();
 
 /*
-isStackempty checks if a stack is empty or not
+isDtreeempty checks if a stack is empty or not
 */
 int isDtreeempty();
 
 /*
-isStackfull checks if a stack is full of not based on the stacksize
+isDtreefull checks if a dtree is full of not based on the dtreesize
 */
 int isDtreefull();
 
 /*
-Stackpeek returns the top node of the stack
+Dtreepeek returns the top node of the dtree
 */
 nodeType * Dtreepeek();
 
 /*
-Stackpop returns the top node of the stack and remove it from the stack
+extract the EV of an input node
 */
-nodeType * Dtreepop();
+double DtreeEVnode(int index);
 
 /*
-insert a new node to the stack without changing the size of the stack
+extract the EV of the tree
+*/
+double DtreeEV();
+
+/*
+Expected Cleaning Up
+*/
+void ExpectCleanUp(int index);
+
+/*
+Expected Up
+*/
+void ExpectUp(int index);
+
+
+/*
+insert a new node to the dtree without changing the size of the  dtree
 */
 int Dtreepush(nodeType *node);
 
 /*
-insert a new node to the stack with dynamically adjucting the size of the stack
+insert a new node to the dtree with dynamically adjucting the size of the dtree
 */
 int DtreepushDP(nodeType *node);
 
 /*
-free Stack memory
+free Dtree memory
 */
 void freeDtree();
 

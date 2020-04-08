@@ -38,8 +38,15 @@ struct nodeType_{
 	dataType *  data;
 	nodeType * prevnode;
 	nodeType * nextnode;
+
+	/*
+	  Information for the decision tree: -----
+	*/
 	double EV;
 	double probability;
+	int index;
+	//----------------------------------------
+
 };
 
 
